@@ -1,9 +1,7 @@
-import json
+from pipenv import find_install_requires  # type: ignore [import]
 
-from setuptools import setup  # type: ignore
+from setuptools import setup  # type: ignore [import]
 
-with open("Pipfile.lock", "r") as file:
-    pipfile_lock = json.load(file)
 
 setup(
     name="jwts",
@@ -13,11 +11,6 @@ setup(
     author_email="vladimirdev635@gmail.com",
     license="MIT",
     packages=["jwts"],
-    install_requires=list(
-        map(
-            lambda package: package[0] + package[1]["version"],  # type: ignore
-            pipfile_lock["default"].items(),
-        )
-    ),
+    install_requires=find_install_requires(),
     package_data={"jwts": ["py.typed"]},
 )
