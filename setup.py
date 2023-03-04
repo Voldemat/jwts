@@ -2,10 +2,12 @@ from pathlib import Path
 
 from setuptools import setup  # type: ignore [import]
 
+from version import get_git_version
+
 
 setup(
     name="jwts",
-    version="0.0.1",
+    version=get_git_version(),
     description="Set of abstractions for jwt tokens based on pyjwt[crypto].",
     author="Vladimir Vojtenko",
     author_email="vladimirdev635@gmail.com",
