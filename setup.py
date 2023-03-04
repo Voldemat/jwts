@@ -1,5 +1,3 @@
-from pipenv import find_install_requires  # type: ignore [import]
-
 from setuptools import setup  # type: ignore [import]
 
 
@@ -11,6 +9,6 @@ setup(
     author_email="vladimirdev635@gmail.com",
     license="MIT",
     packages=["jwts"],
-    install_requires=find_install_requires(),
+    install_requires=["pyjwt[crypto]"],
     package_data={"jwts": ["py.typed"]},
 )
