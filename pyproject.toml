@@ -6,4 +6,3 @@ log_cli_level = "DEBUG"
 
 [tool.mypy]
 strict = true
-exclude = ['.version']
