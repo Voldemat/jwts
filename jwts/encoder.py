@@ -32,6 +32,7 @@ class JWTEncoder:
         data: dict[str, Any],
         claims: JWTEncodeClaims | None = None,
         timestamp: datetime = datetime.now(tz=timezone.utc),
+        extra_headers: dict[str, Any] = {},
     ) -> str:
         if claims is None:
             claims = self.default_claims
@@ -39,6 +40,7 @@ class JWTEncoder:
             payload=self.create_payload(data, claims, timestamp),
             key=self.identity.get_encode_key(),
             algorithm=self.identity.algorithm.value,
+            headers=extra_headers,
         )
 
     def create_payload(
