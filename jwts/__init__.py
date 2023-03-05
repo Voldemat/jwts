@@ -3,7 +3,11 @@ from .claims import JWTDecodeClaims, JWTEncodeClaims
 from .decoder import JWTDecoder
 from .encoder import JWTEncoder
 from .exceptions import JWTDecodeException, JWTEncodeException, JWTException
-from .helpers import JWTTokenPairIssuer, decode_access_token
+from .helpers import (
+    JWTTokenPairIssuer,
+    decode_access_token,
+    decode_refresh_token,
+)
 from .identities import Identity, PemIdentity, PlainIdentity
 
 __all__ = (
@@ -22,4 +26,5 @@ __all__ = (
     "JWTDecodeClaims",
     "JWTTokenPairIssuer",
     "decode_access_token",
+    "decode_refresh_token",
 )

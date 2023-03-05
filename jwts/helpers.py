@@ -67,4 +67,14 @@ def decode_access_token(
     headers = decoder.get_headers(access_token)
     if headers.get("grant_type", None) != ACCESS_TOKEN_GRANT_TYPE:
         raise ValueError('"grant_type" header missing or invalid')
-    return payload["payload"] # type: ignore
+    return payload["payload"]  # type: ignore
+
+
+def decode_refresh_token(
+    decoder: JWTDecoder, refresh_token: str
+) -> dict[str, Any]:
+    payload = decoder.decode(refresh_token)
+    headers = decoder.get_headers(refresh_token)
+    if headers.get("grant_type", None) != REFRESH_TOKEN_GRANT_TYPE:
+        raise ValueError('"grant_type" header missing or invalid')
+    return payload["payload"]  # type: ignore
