@@ -36,7 +36,7 @@ class JWTDecodeClaims:
     require: list[str] = field(default_factory=lambda: ["exp", "iat", "nbf"])
 
     def get_defined(self) -> dict[str, Any]:
-        claims: dict[str, Any] = {"require": self.require}
+        claims: dict[str, Any] = {"options": {"require": self.require}}
         if self.issuer:
             claims["issuer"] = self.issuer
         if self.leeway:

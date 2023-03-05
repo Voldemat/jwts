@@ -35,7 +35,7 @@ class JWTDecoder:
             jwt=token,
             key=self.identity.get_decode_key(),
             algorithms=[self.identity.algorithm.value],
-            options=claims.get_defined(),
+            **claims.get_defined(),
         )
 
     def _decode(self, **options: Any) -> dict[str, Any]:
