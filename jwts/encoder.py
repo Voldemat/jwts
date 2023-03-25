@@ -31,9 +31,11 @@ class JWTEncoder:
         self,
         data: dict[str, Any],
         claims: JWTEncodeClaims | None = None,
-        timestamp: datetime = datetime.now(tz=timezone.utc),
+        timestamp: datetime | None = None,
         extra_headers: dict[str, Any] = {},
     ) -> str:
+        if timestamp is None:
+            timestamp = datetime.now(tz=timezone.utc)
         if claims is None:
             claims = self.default_claims
         return self._encode(
